@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 )
 
 func blocking(message string) {
@@ -23,7 +24,6 @@ func asyncWorker(myChannel chan string) {
 
 	// Send message on myChannel that I am done.
 	myChannel <- "done"
-
 }
 
 func asyncReceiver(myChannel chan string) {
@@ -38,7 +38,9 @@ func main() {
 	// Create a channel type.
 	// Format is : variable name, the type which is a channel
 	// and then string which is the type we pass over the channel
-	var myChannel chan string = make(chan string)
+	var myChannel string = make(chan string)
+
+	log.Println("test")
 
 	// Example of the blocking function blocking the
 	// execution to our goroutine that execute async()
